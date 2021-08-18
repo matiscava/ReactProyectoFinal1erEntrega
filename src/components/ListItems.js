@@ -12,11 +12,13 @@ import ImgCinturon01 from '../assets/img/cinturones/Cinturon01.webp';
 import ImgCinturon02 from '../assets/img/cinturones/Cinturon04.webp';
 import ImgCinturon03 from '../assets/img/cinturones/Cinturon02.webp';
 import ImgCinturon04 from '../assets/img/cinturones/Cinturon03.webp';
+import { NavLink} from 'react-router-dom';
 
 
 const billeteras = [
     {
         'id':1,
+        'categoria':'billeteras',
         'nombre': 'Billetera Rusty Simplicity Marron',
         'precio': 3890,
         'stock': 10,
@@ -28,6 +30,7 @@ const billeteras = [
     },
     {
         'id':2,
+        'categoria':'billeteras',
         'nombre': 'Billetera Hombre Duogan Tarjetero Monedero Eco Cuero',
         'precio': 2280,
         'stock': 6,
@@ -39,6 +42,7 @@ const billeteras = [
     },
     {
         'id':3,
+        'categoria':'billeteras',
         'nombre': 'Billetera Bioworld PlayStation One grey poliéster y poliuretano',
         'precio': 1890,
         'stock': 3,
@@ -50,6 +54,7 @@ const billeteras = [
     },
     {
         'id':4,
+        'categoria':'billeteras',
         'nombre': 'Billetera Walla Vintage black y silver cuero',
         'precio': 4899,
         'stock': 6,
@@ -61,6 +66,7 @@ const billeteras = [
     },
     {
         'id':5,
+        'categoria':'billeteras',
         'nombre': 'Billetera Los Robles Polo Time 0076 marrón cuero',
         'precio': 5990,
         'stock': 7,
@@ -75,7 +81,8 @@ const billeteras = [
 const cinturones = [
     {
         'id':6,
-        'nombre': 'Cinturones Cinto De Cuero Hombre Talles Grandes Hasta 180cm',
+        'categoria':'cinturones',
+        'nombre': 'Cinto De Cuero Hombre Talles Grandes Hasta 180cm',
         'precio': 1850,
         'stock': 11,
         'marca': 'Jonaro Jeans',
@@ -86,7 +93,8 @@ const cinturones = [
     },
     {
         'id':7,
-        'nombre': 'Cintos Hombre Studebaker Cuero Vaqueta Hebilla Gastada',
+        'categoria':'cinturones',
+        'nombre': 'Cinto Hombre Studebaker Cuero Vaqueta Hebilla Gastada',
         'precio': 1024,
         'stock': 5,
         'marca': 'Studebaker',
@@ -97,7 +105,8 @@ const cinturones = [
     },
     {
         'id':8,
-        'nombre': 'Cinturones Cinto De Cuero Hombre Con Tachas',
+        'categoria':'cinturones',
+        'nombre': 'Cinto De Cuero Hombre Con Tachas',
         'precio': 1780,
         'stock': 21,
         'marca': 'Jonaro Jeans',
@@ -108,7 +117,8 @@ const cinturones = [
     },
     {
         'id':9,
-        'nombre': 'Cinturón De Vestir Hombre Cuero Reversible Talle Especial',
+        'categoria':'cinturones',
+        'nombre': 'Cinto De Vestir Hombre Cuero Reversible Talle Especial',
         'precio': 1899,
         'stock': 2,
         'marca': 'Fabricantes Directos',
@@ -137,13 +147,14 @@ class ListItems extends React.Component{
         super(props);
         this.state={array: productos, porductoInfo: arrayProducto};
     };
+    
     cargarCategoria(arrayCategoria){
         const divCargando =document.querySelector('#cargandoCategorias');
         let contenedorItemDetalle=document.querySelector('.mainItemDetalle');
         contenedorItemDetalle.style.display='none';
         const promesa = ()=>
-         new Promise ((resolve)=>{
-             this.setState({array:[]});
+        new Promise ((resolve)=>{
+            this.setState({array:[]});
             divCargando.style.display= 'block';
             divCargando.innerHTML= 'Cargando.';
             setTimeout(()=>{
@@ -170,10 +181,10 @@ class ListItems extends React.Component{
         const divCargando = document.querySelector('#cargandoCategorias');
         let contenedorItems=document.querySelector('.contenedorItems');
         contenedorItems.style.display='none';
-    
+        
         const promesa = ()=>
-         new Promise ((resolve)=>{
-             this.setState({porductoInfo:[]});
+        new Promise ((resolve)=>{
+            this.setState({porductoInfo:[]});
             divCargando.style.display= 'block';
             divCargando.innerHTML= 'Cargando producto en 3...';
             setTimeout(()=>{
@@ -211,18 +222,19 @@ class ListItems extends React.Component{
             contenedorItems.style.display='flex';
         }, 2000);
     }
+    
     render(){
         return (
-            <div className="contenedorCategorias">
+            <div className="contenedorCategorias" key='contenedorCategorias'>
                 <div className="listadoCategorias">
                     <div className="btnCategoria" id='BtnTodos' onClick={this.cargarCategoria.bind(this,productos)}>
-                        Todos los Productos
+                        <NavLink exact activeClassName='categoriaActiva' to='/categorias/'>Todos los Productos</NavLink>
                     </div>
                     <div className="btnCategoria" id='BtnBilleteras' onClick={this.cargarCategoria.bind(this,billeteras)}>
-                        Billeteras
+                        <NavLink activeClassName='categoriaActiva' to='/categorias/billeteras'>Billeteras</NavLink>
                     </div>
                     <div className="btnCategoria" id='BtnCinturones' onClick={this.cargarCategoria.bind(this,cinturones)}>
-                        Cintrunes
+                        <NavLink activeClassName='categoriaActiva' to='/categorias/cinturones'>Cintrunes</NavLink>
                     </div>
                 </div>
                 <div id='cargandoCategorias'></div>
@@ -235,6 +247,7 @@ class ListItems extends React.Component{
                         nombre={a.nombre} 
                         stock={a.stock} 
                         id={a.id} 
+                        categoria={a.categoria}
                         funcion={this.abrirDetalleProducto.bind(this,a.id)}></Item>
                     ))
                     }

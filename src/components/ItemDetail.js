@@ -12,8 +12,8 @@ const ItemDetail = ({img,alt,nombre,precio,stock,id,info,funcion})=>{
                     <p className='ItemDetalleInfo'>{info}</p>
                     <p className='ItemDetalleStock'>Stock: {stock} </p>
                     <div className='ItemDetalleContenedorBtn'>
-                        <div className='ItemBtn ItemBtn--Volver' id={`ItemBtnVolver-${id}`} onClick={funcion}>Volver a Colecciones</div>
-                        <div className='ItemBtn ItemBtn--agregar' id={`ItemBtnAgregar-${id}`}> Agregar al carrito </div>
+                        <div className='ItemDetalleBtn ItemDetalleBtn--Volver' id={`ItemDetalleBtnVolver-${id}`} onClick={funcion}>Volver a Colecciones</div>
+                        <div className='ItemDetalleBtn ItemDetalleBtn--agregar' id={`ItemDetalleBtnAgregar-${id}`}> Agregar al carrito </div>
                     </div>
                 </div>
                 <span className='IconoSocial-close ItemDetalleBtnCerrar' onClick={funcion}></span>

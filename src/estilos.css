@@ -27,9 +27,10 @@ header{
     display: flex;
     margin: 0 auto;
 }
-.headerLink{
+.headerLink a{
     cursor: pointer;
-    padding: 14px 24px;
+    padding: 40px 24px;
+    text-decoration: none;
     transition:0.5s;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
@@ -41,14 +42,14 @@ header{
 /* .headerLink-final{
     border: 0;
 } */
-.headerLink:hover{
+.headerLink a:hover, a.navLinkActivo{
     background-color: violet;
     text-decoration: underline ;
     color: yellow;
     box-shadow: inset 0 0 10px 0px #a26666;
 }
 .headerContenedorSpan{
-    padding: 30px;
+    padding: 39px;
     color: white;
 }
 
@@ -57,7 +58,7 @@ header{
     transition: 0.5s;
     font-size: 20px;
 }
-.NavBarSpan:hover{
+.NavBarSpan:hover, .navLinkActivo .NavBarSpan{
     color: yellow;
     text-shadow: 0 0 10px black;
 }
@@ -77,6 +78,7 @@ header{
     background-color: #fffaca;
     font-family: system-ui;
     box-shadow: 0 0 5px 5px #c3b5b5;
+    border-radius: 15px;
 }
 .contendorImgItem{
     overflow: hidden;
@@ -86,6 +88,8 @@ header{
     align-content: center;
     margin: 10px;
     background: white;
+    border-radius: 15px;
+
 }
 .ItemImg{
     max-width: 100%;
@@ -144,7 +148,9 @@ header{
     background: beige;
     cursor: pointer;
 }
-.ItemBtn{
+.ItemBtn a, .ItemDetalleBtn{
+    display: block;
+    text-decoration: none;
     margin: 10px auto;
     padding: 10px 18px;
     background-color: salmon;
@@ -159,7 +165,7 @@ header{
     font-weight: 800;
 
 }
-.ItemBtn:hover{
+.ItemBtn:hover a, .ItemDetalleBtn:hover{
     color: salmon;
     background-color: white;
 
@@ -174,7 +180,7 @@ header{
     background-color: #3e71d1;
     justify-content: center;
 }
-.btnCategoria{
+.btnCategoria a{
     background-color: #91b2ef;
     padding: 10px;
     border: 2px solid #3e71d1;
@@ -184,8 +190,10 @@ header{
     color: #fff;
     font-family: sans-serif;
     transition: 0.3s;
+    display: block;
+    text-decoration: none;
 }
-.btnCategoria:hover{
+.btnCategoria:hover a, a.categoriaActiva{
     background-color: transparent;
     color:#91ecef;
     font-weight: 600;
@@ -258,19 +266,19 @@ header{
     display: flex;
     justify-content: center;
 }
-.ItemBtn--Volver{
+.ItemDetalleBtn--Volver{
     background-color: rgb(221, 41, 71);
     border-color: rgb(221, 41, 71);
     margin: 10px;
 }
-.ItemBtn--Volver:hover{
+.ItemDetalleBtn--Volver:hover{
     color: rgb(221, 41, 71);
 }
-.ItemBtn--agregar{
+.ItemDetalleBtn--agregar{
     background-color: seagreen;
     border-color: seagreen;
     margin: 10px;
 }
-.ItemBtn--agregar:hover{
+.ItemDetalleBtn--agregar:hover{
     color: seagreen;
 }
